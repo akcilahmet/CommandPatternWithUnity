@@ -28,8 +28,10 @@ namespace CommandPattern
 
         private void Start()
         {
-            _forwardButton.onClick.AddListener(() => CommandManager.ExecuteCommand(new MoveForwardCommand(PlayerMovement)));
-            _backwardButton.onClick.AddListener(() => CommandManager.ExecuteCommand(new MoveBackwardCommand(PlayerMovement)));
+            _forwardButton.onClick.AddListener(() =>
+                CommandManager.ExecuteCommand(new MoveForwardCommand(PlayerMovement)));
+            _backwardButton.onClick.AddListener(() =>
+                CommandManager.ExecuteCommand(new MoveBackwardCommand(PlayerMovement)));
 
             _rightButton.onClick.AddListener(() => CommandManager.ExecuteCommand(new MoveRightCommand(PlayerMovement)));
             _leftButton.onClick.AddListener(() => CommandManager.ExecuteCommand(new MoveLeftCommand(PlayerMovement)));
