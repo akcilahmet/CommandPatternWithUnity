@@ -1,4 +1,4 @@
-# CommandPatternWithUnity
+# Command Pattern Example
 
 This project demonstrates the use of the Command Pattern in Unity. The Command Pattern encapsulates requests as objects, allowing for parameterization of clients with queues, requests, and operations. It also supports undo and redo operations. This example showcases how to manage player movements and their undo functionality using this pattern.
 
