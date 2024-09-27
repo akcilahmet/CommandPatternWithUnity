@@ -57,7 +57,7 @@ namespace CommandPattern
         public void UndoMove(Vector3 previousPosition)
         {
             transform.position = previousPosition;
-            Debug.Log("Movement undone");
+            Debug.Log("Movement undo");
         }
 
         /// <summary>

@@ -17,8 +17,7 @@ namespace CommandPattern
 
         private void Awake()
         {
-            _uiManager.CommandManager = _commandManager;
-            _uiManager.PlayerMovement = _playerMovement;
+            _uiManager.Initialize(_commandManager, _playerMovement);
         }
     }
 }

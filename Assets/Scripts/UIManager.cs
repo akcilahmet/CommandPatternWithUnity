@@ -5,6 +5,9 @@ namespace CommandPattern
 {
     public class UIManager : MonoBehaviour
     {
+        private CommandManager _commandManager;
+        private PlayerMovement _playerMovement;
+        
         [SerializeField]
         private Button _forwardButton;
 
@@ -22,22 +25,25 @@ namespace CommandPattern
 
         [SerializeField]
         private Button _redoButton;
+        
 
-        public CommandManager CommandManager { get; set; }
-        public PlayerMovement PlayerMovement { get; set; }
-
+        public void Initialize(CommandManager commandManager, PlayerMovement playerMovement)
+        {
+            _commandManager = commandManager;
+            _playerMovement = playerMovement;
+        }
         private void Start()
         {
             _forwardButton.onClick.AddListener(() =>
-                CommandManager.ExecuteCommand(new MoveForwardCommand(PlayerMovement)));
+                _commandManager.ExecuteCommand(new MoveForwardCommand(_playerMovement)));
             _backwardButton.onClick.AddListener(() =>
-                CommandManager.ExecuteCommand(new MoveBackwardCommand(PlayerMovement)));
+                _commandManager.ExecuteCommand(new MoveBackwardCommand(_playerMovement)));
 
-            _rightButton.onClick.AddListener(() => CommandManager.ExecuteCommand(new MoveRightCommand(PlayerMovement)));
-            _leftButton.onClick.AddListener(() => CommandManager.ExecuteCommand(new MoveLeftCommand(PlayerMovement)));
+            _rightButton.onClick.AddListener(() => _commandManager.ExecuteCommand(new MoveRightCommand(_playerMovement)));
+            _leftButton.onClick.AddListener(() => _commandManager.ExecuteCommand(new MoveLeftCommand(_playerMovement)));
 
-            _undoButton.onClick.AddListener(CommandManager.Undo);
-            _redoButton.onClick.AddListener(CommandManager.Redo);
+            _undoButton.onClick.AddListener(_commandManager.Undo);
+            _redoButton.onClick.AddListener(_commandManager.Redo);
         }
     }
 }
